@@ -26,7 +26,7 @@ pipeline {
       steps {
         sh '''
           python --version
-          pip install -r requirements.txt
+          pip install -r tests/requirements.txt
           if [ "$TEST_SUITE" = "math" ]; then
             pytest -q tests/test_math.py
           else
