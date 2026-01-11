@@ -11,7 +11,7 @@ pipeline {
       steps { checkout scm }
     }
     stage('Install deps') {
-      steps { sh 'pip install -r requirements.txt' }
+      steps { sh 'pip install -r tests/requirements.txt' }
     }
     stage('Run strings tests') {
       steps { sh 'pytest -q tests/test_strings.py' }
