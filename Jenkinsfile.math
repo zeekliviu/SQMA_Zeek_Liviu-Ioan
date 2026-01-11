@@ -1,0 +1,20 @@
+pipeline {
+  agent {
+    docker {
+      image 'python:3.12-slim'
+      args '-u root:root'
+    }
+  }
+
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+    stage('Install deps') {
+      steps { sh 'pip install -r requirements.txt' }
+    }
+    stage('Run math tests') {
+      steps { sh 'pytest -q tests/test_math.py' }
+    }
+  }
+}
