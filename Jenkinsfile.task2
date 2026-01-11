@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Run all test jobs') {
+      parallel {
+        stage('Job: Math') {
+          steps {
+            build job: 'Task2_TestMath'
+          }
+        }
+        stage('Job: Strings') {
+          steps {
+            build job: 'Task2_TestStrings'
+          }
+        }
+      }
+    }
+  }
+}
